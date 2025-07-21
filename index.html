@@ -2,7 +2,7 @@
 <html lang="th">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>เล่านิทานจากภาพ</title>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -82,6 +82,7 @@
         align-items: center;
         gap: 5px;
         transition: all 0.3s ease;
+        user-select: none;
       }
       .switch-view:hover {
         background: #4285f4;
@@ -115,8 +116,9 @@
         font-size: 0.9rem;
         flex: 1 1 45%;
         max-width: 200px;
+        user-select: none;
       }
-      button:hover {
+      button:hover:not(:disabled) {
         background: #1a73e8;
         transform: scale(1.05);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -190,13 +192,20 @@
         color: white;
       }
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .star {
         cursor: pointer;
+        font-size: 1.4rem;
+        user-select: none;
       }
-
       /* Responsive Design */
       @media (min-width: 768px) {
         h1 {
@@ -234,7 +243,11 @@
   <body>
     <div class="container">
       <h1>เล่านิทานจากภาพ</h1>
-      <p class="subtitle">นิทานภาพมหัศจรรย์:พจญภัยในโลกแห่งจินตนาการด้วยเทคโนโลยี AI เพราะทุกภาพถ่ายมีเรื่องราวและทุกเรื่องราวสามารถสร้างแรงบันดาลใจได้ ร่วมเป็นส่วนหนึ่งของการเดินทางในโลกนิทานแห่งจินตนาการกับเรา</p>
+      <p class="subtitle">
+        นิทานภาพมหัศจรรย์:ผจญภัยในโลกแห่งจินตนาการด้วยเทคโนโลยี AI
+        เพราะทุกภาพถ่ายมีเรื่องราวและทุกเรื่องราวสามารถสร้างแรงบันดาลใจได้
+        ร่วมเป็นส่วนหนึ่งของการเดินทางในโลกนิทานแห่งจินตนาการกับเรา
+      </p>
 
       <div class="card">
         <div class="card-content">
@@ -266,9 +279,19 @@
                   white-space: pre-line;
                 "
               ></p>
-              <!-- เพิ่มปุ่มเปลี่ยนภาษา -->
               <div style="text-align: center; margin-top: 20px;">
-                <button id="change-language-btn" style="background: #34a853; color: white; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-weight: 600; margin: 5px;">
+                <button
+                  id="change-language-btn"
+                  style="
+                    background: #34a853;
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    margin: 5px;
+                  "
+                >
                   เปลี่ยนภาษาเป็นภาษาอังกฤษ
                 </button>
               </div>
@@ -306,25 +329,54 @@
       </div>
     </div>
 
-    <div style="text-align: center; margin-top: 20px; padding: 10px; color: white; font-size: 0.9rem; background: rgba(0, 0, 0, 0.1);">
-      <p>นายปรีชา แจ้งสว่าง</p>
-      <p>ตำแหน่ง ครู โรงเรียนบ้านตะเคียนช่างเหล็ก</p>
+    <div
+      style="
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        color: white;
+        font-size: 0.9rem;
+        background: rgba(0, 0, 0, 0.1);
+      "
+    >
+      <p>นักเรียนโรงเรียนบ้านตะเคียนช่างเหล็ก</p>
+
       <!-- เพิ่มโค้ดนับจำนวนผู้เข้าชม -->
       <div style="margin-top: 10px;">
-        <a href='http://www.freevisitorcounters.com'>freevisitorcounters</a>
-        <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=2adc79d2e797e3f5ea590a53d6595c4f436ac953'></script>
-        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1292747/t/1"></script>
+        <a href="http://www.freevisitorcounters.com">freevisitorcounters</a>
+        <script
+          type="text/javascript"
+          src="https://www.freevisitorcounters.com/auth.php?id=2adc79d2e797e3f5ea590a53d6595c4f436ac953"
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://www.freevisitorcounters.com/en/home/counter/1292747/t/1"
+        ></script>
       </div>
     </div>
 
     <!-- เพิ่มปุ่มเปลี่ยนธีม -->
-    <button id="theme-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; border-radius: 25px; background: #4285f4; color: white; border: none; cursor: pointer;">
+    <button
+      id="theme-toggle"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        background: #4285f4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        user-select: none;
+      "
+    >
       <i class="fas fa-moon"></i> เปลี่ยนธีม
     </button>
 
     <script>
       const video = document.getElementById("webcam");
-      const canvas = document.createElement("canvas"); // สร้าง canvas ใหม่
+      const canvas = document.createElement("canvas");
       const capturedImage = document.getElementById("captured-image");
       const captureBtn = document.getElementById("capture-btn");
       const retakeBtn = document.getElementById("retake-btn");
@@ -345,24 +397,24 @@
       const API_KEY = "AIzaSyAG64E5QRI_JiRqgyvOh0urpdJeJAO1Cas";
       const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-      const STORY_PROMPT = `จากภาพที่เห็น กรุณาเล่านิทานสั้นๆ สนุกๆ ที่เกี่ยวข้องกับสิ่งที่เห็นในภาพ ความยาวประมาณ 3 ย่อหน้า 
-        - แนะนำตัวละครหลักจากภาพ
-        - มีเหตุการณ์หรือปัญหาที่เกิดขึ้น
-        - วิธีแก้ปัญหาและบทสรุปที่มีข้อคิด
-        โดยใช้ภาษาที่เข้าใจง่าย เหมาะสำหรับเด็ก และห้ามมีเครื่องหมายพิเศษหรือตัวเลข`;
+      const STORY_PROMPT = `จากภาพที่เห็น กรุณาเล่านิทานสั้นๆ สนุกๆ ที่เกี่ยวข้องกับสิ่งที่เห็นในภาพ ความยาวประมาณ 3 ย่อหน้า
+- แนะนำตัวละครหลักจากภาพ
+- มีเหตุการณ์หรือปัญหาที่เกิดขึ้น
+- วิธีแก้ปัญหาและบทสรุปที่มีข้อคิด
+โดยใช้ภาษาที่เข้าใจง่าย เหมาะสำหรับเด็ก และห้ามมีเครื่องหมายพิเศษหรือตัวเลข`;
 
       const ENGLISH_STORY_PROMPT = `From the image you see, please tell a short, fun story related to what is seen in the image. The length should be about 3 paragraphs.
-        - Introduce the main characters from the image
-        - Include an event or problem that occurs
-        - The solution and a conclusion with a moral lesson
-        Use simple language that is easy to understand and suitable for children, and do not include special symbols or numbers`;
+- Introduce the main characters from the image
+- Include an event or problem that occurs
+- The solution and a conclusion with a moral lesson
+Use simple language that is easy to understand and suitable for children, and do not include special symbols or numbers`;
 
-      let currentLanguage = 'th'; // เริ่มต้นด้วยภาษาไทย
+      let currentLanguage = "th"; // เริ่มต้นภาษาไทย
       let speechSynth = window.speechSynthesis;
       let speaking = false;
       let currentUtterance = null;
-      let storyHistory = [];
-      let currentFacingMode = "user"; // เริ่มต้นด้วยกล้องหน้า
+      let storyHistory = JSON.parse(localStorage.getItem("storyHistory")) || [];
+      let currentFacingMode = "user"; // กล้องหน้าเริ่มต้น
 
       async function startWebcam(facingMode = "user") {
         try {
@@ -373,7 +425,7 @@
             video: { facingMode: facingMode },
           });
           video.srcObject = stream;
-          currentFacingMode = facingMode; // อัปเดตค่า facingMode ปัจจุบัน
+          currentFacingMode = facingMode;
         } catch (error) {
           console.error("Error accessing webcam:", error);
           alert("ไม่สามารถเข้าถึงกล้องได้ กรุณาตรวจสอบการอนุญาตใช้งานกล้อง");
@@ -400,7 +452,7 @@
         stopSpeaking();
 
         currentUtterance = new SpeechSynthesisUtterance(text);
-        currentUtterance.lang = currentLanguage === 'th' ? 'th-TH' : 'en-US';
+        currentUtterance.lang = currentLanguage === "th" ? "th-TH" : "en-US";
         currentUtterance.rate = 1;
         currentUtterance.pitch = 1;
 
@@ -447,17 +499,19 @@
         stopBtn.style.display = "none";
       }
 
-      async function uploadToGemini(base64Image) {
+      async function uploadToGemini(base64Image, language = "th") {
         try {
           spinner.style.display = "inline-block";
           captureBtn.disabled = true;
           statusDiv.textContent = "กำลังวิเคราะห์ภาพและเขียนนิทาน...";
 
+          const promptText = language === "th" ? STORY_PROMPT : ENGLISH_STORY_PROMPT;
+
           const requestBody = {
             contents: [
               {
                 parts: [
-                  { text: currentLanguage === 'th' ? STORY_PROMPT : ENGLISH_STORY_PROMPT },
+                  { text: promptText },
                   {
                     inline_data: {
                       mime_type: "image/jpeg",
@@ -471,33 +525,15 @@
               temperature: 0.4,
               topK: 32,
               topP: 1,
+              candidateCount: 1,
               maxOutputTokens: 1024,
             },
-            safetySettings: [
-              {
-                category: "HARM_CATEGORY_HARASSMENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-              {
-                category: "HARM_CATEGORY_HATE_SPEECH",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-              {
-                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-              {
-                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-            ],
+            returnLikelihoods: "NONE",
           };
 
           const response = await fetch(API_URL, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestBody),
           });
 
@@ -505,123 +541,192 @@
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
-          const data = await response.json();
-          let storyText = data.candidates[0].content.parts[0].text;
+          const json = await response.json();
 
-          // ลบเครื่องหมายพิเศษและตัวเลขออกจากนิทาน
-          storyText = storyText.replace(/[0-9]. /g, ""); // ลบตัวเลขและจุดตามหลัง
-          storyText = storyText.replace(/[-*•]/g, ""); // ลบเครื่องหมาย bullet points
+          if (
+            !json.candidates ||
+            json.candidates.length === 0 ||
+            !json.candidates[0].output
+          ) {
+            throw new Error("ไม่มีข้อมูลผลลัพธ์จาก API");
+          }
 
-          result.classList.add("show");
-          resultText.textContent = storyText; // แสดงนิทานที่ปรับแล้ว
-          statusDiv.textContent = "";
-          saveToHistory(storyText); // บันทึกนิทานลงประวัติ
+          const story = json.candidates[0].output.trim();
+
+          // บันทึกนิทานลง history
+          storyHistory.push({
+            timestamp: new Date().toISOString(),
+            language,
+            story,
+          });
+          localStorage.setItem("storyHistory", JSON.stringify(storyHistory));
+
+          return story;
         } catch (error) {
-          console.error("Error:", error);
-          statusDiv.textContent = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง";
+          console.error("Error calling Gemini API:", error);
+          alert("เกิดข้อผิดพลาดในการเชื่อมต่อกับ API กรุณาลองใหม่อีกครั้ง");
+          return null;
         } finally {
           spinner.style.display = "none";
           captureBtn.disabled = false;
+          statusDiv.textContent = "";
         }
       }
 
-      function changeLanguage() {
-        if (currentLanguage === 'th') {
-          currentLanguage = 'en';
-          changeLanguageBtn.textContent = 'เปลี่ยนภาษาเป็นไทย';
-          resultText.textContent = "Generating story in English...";
-        } else {
-          currentLanguage = 'th';
-          changeLanguageBtn.textContent = 'เปลี่ยนภาษาเป็นภาษาอังกฤษ';
-          resultText.textContent = "กำลังสร้างนิทานเป็นภาษาไทย...";
-        }
-        // ส่งคำขอใหม่เพื่อสร้างนิทานในภาษาที่เลือก
-        const base64Image = capturedImage.src;
-        uploadToGemini(base64Image);
-      }
-
-      function downloadStory() {
-        const storyText = document.getElementById("result-text").textContent;
-        const blob = new Blob([storyText], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "นิทานจากภาพ.txt";
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-
-      function shareAsImage() {
-        html2canvas(document.querySelector(".result")).then(canvas => {
-          const image = canvas.toDataURL("image/png");
-          const a = document.createElement("a");
-          a.href = image;
-          a.download = "นิทานจากภาพ.png";
-          a.click();
-        });
-      }
-
-      function saveToHistory(story) {
-        storyHistory.push(story);
-        localStorage.setItem("storyHistory", JSON.stringify(storyHistory));
-      }
-
-      function showHistory() {
-        const history = JSON.parse(localStorage.getItem("storyHistory")) || [];
-        const historyList = history.map((story, index) => `<div>${index + 1}. ${story}</div>`).join("");
-        alert(historyList);
-      }
-
-      function showNotification(message) {
-        if (Notification.permission === "granted") {
-          new Notification("แจ้งเตือน", { body: message });
-        } else if (Notification.permission !== "denied") {
-          Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-              new Notification("แจ้งเตือน", { body: message });
-            }
-          });
-        }
-      }
-
-      captureBtn.addEventListener("click", () => {
-        const ctx = canvas.getContext("2d");
+      async function captureAndGenerate() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
+        const ctx = canvas.getContext("2d");
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const base64Image = canvas.toDataURL("image/jpeg", 0.9);
-        showImage(base64Image);
-        uploadToGemini(base64Image);
-      });
 
-      retakeBtn.addEventListener("click", retakePhoto);
-      changeLanguageBtn.addEventListener("click", changeLanguage);
-      playBtn.addEventListener("click", resumeSpeaking);
-      pauseBtn.addEventListener("click", pauseSpeaking);
-      stopBtn.addEventListener("click", stopSpeaking);
-      downloadBtn.addEventListener("click", downloadStory);
-      shareImageBtn.addEventListener("click", shareAsImage);
-      historyBtn.addEventListener("click", showHistory);
-      themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        if (document.body.classList.contains("dark-mode")) {
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i> เปลี่ยนธีม';
+        const base64Image = canvas.toDataURL("image/jpeg");
+        showImage(base64Image);
+
+        const story = await uploadToGemini(base64Image, currentLanguage);
+
+        if (story) {
+          resultText.textContent = story;
+          result.classList.add("show");
+          speakText(story);
         } else {
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i> เปลี่ยนธีม';
+          resultText.textContent = "ไม่สามารถสร้างนิทานจากภาพได้";
+          result.classList.add("show");
+        }
+      }
+
+      changeLanguageBtn.addEventListener("click", async () => {
+        if (!resultText.textContent) return;
+
+        currentLanguage = currentLanguage === "th" ? "en" : "th";
+        changeLanguageBtn.textContent =
+          currentLanguage === "th"
+            ? "เปลี่ยนภาษาเป็นภาษาอังกฤษ"
+            : "Switch to Thai";
+
+        statusDiv.textContent = "กำลังแปลและเขียนนิทาน...";
+        spinner.style.display = "inline-block";
+        captureBtn.disabled = true;
+
+        try {
+          const base64Image = capturedImage.src;
+          const story = await uploadToGemini(base64Image, currentLanguage);
+
+          if (story) {
+            resultText.textContent = story;
+            speakText(story);
+          } else {
+            resultText.textContent = "ไม่สามารถแปลงภาษาได้";
+          }
+        } catch (error) {
+          alert("เกิดข้อผิดพลาดในการแปลงภาษา");
+          console.error(error);
+        } finally {
+          spinner.style.display = "none";
+          captureBtn.disabled = false;
+          statusDiv.textContent = "";
         }
       });
-      stars.forEach(star => {
+
+      captureBtn.addEventListener("click", captureAndGenerate);
+      retakeBtn.addEventListener("click", retakePhoto);
+
+      playBtn.addEventListener("click", () => {
+        if (speechSynth.paused) resumeSpeaking();
+        else speakText(resultText.textContent);
+      });
+      pauseBtn.addEventListener("click", pauseSpeaking);
+      stopBtn.addEventListener("click", stopSpeaking);
+
+      // สลับกล้อง
+      document.getElementById("switch-camera").addEventListener("click", () => {
+        const newMode = currentFacingMode === "user" ? "environment" : "user";
+        startWebcam(newMode);
+      });
+
+      // ดาวน์โหลดนิทานเป็น .txt
+      downloadBtn.addEventListener("click", () => {
+        const blob = new Blob([resultText.textContent], {
+          type: "text/plain;charset=utf-8",
+        });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `story_${new Date()
+          .toISOString()
+          .slice(0, 19)
+          .replace(/[:T]/g, "-")}.txt`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+
+      // แชร์ภาพนิทาน (จับภาพ text + image)
+      shareImageBtn.addEventListener("click", async () => {
+        try {
+          const elementToCapture = result;
+          const canvas = await html2canvas(elementToCapture, {
+            backgroundColor: window
+              .getComputedStyle(elementToCapture)
+              .backgroundColor,
+          });
+          canvas.toBlob(async (blob) => {
+            if (navigator.canShare && navigator.canShare({ files: [new File([blob], "story.png", { type: "image/png" })] })) {
+              await navigator.share({
+                files: [new File([blob], "story.png", { type: "image/png" })],
+                title: "นิทานจากภาพ",
+                text: "ลองดูนิทานภาพที่สร้างจาก AI นี้!",
+              });
+            } else {
+              alert("เบราว์เซอร์ของคุณไม่รองรับการแชร์ไฟล์นี้");
+            }
+          });
+        } catch (err) {
+          alert("เกิดข้อผิดพลาดในการแชร์ภาพ: " + err.message);
+        }
+      });
+
+      // ดูประวัตินิทาน
+      historyBtn.addEventListener("click", () => {
+        if (storyHistory.length === 0) {
+          alert("ยังไม่มีประวัตินิทาน");
+          return;
+        }
+        let historyStr = "ประวัตินิทาน:\n\n";
+        storyHistory.forEach((entry, index) => {
+          historyStr += `${index + 1}. [${new Date(entry.timestamp).toLocaleString()}] (${entry.language.toUpperCase()})\n${entry.story}\n\n`;
+        });
+        alert(historyStr);
+      });
+
+      // ให้คะแนนนิทาน
+      stars.forEach((star) => {
         star.addEventListener("click", () => {
-          alert(`คุณให้คะแนน: ${star.getAttribute("data-value")} ดาว`);
+          const rating = star.dataset.value;
+          stars.forEach((s) => {
+            s.style.color = s.dataset.value <= rating ? "#FFD700" : "#ccc";
+          });
+          alert(`ขอบคุณที่ให้คะแนน ${rating} ดาว!`);
+          // อาจเก็บคะแนนใน localStorage หรือส่งเซิร์ฟเวอร์ได้ที่นี่
         });
       });
 
-      document.getElementById("switch-camera").addEventListener("click", () => {
-        const newFacingMode = currentFacingMode === "user" ? "environment" : "user";
-        startWebcam(newFacingMode);
+      // ธีมสลับกลางวัน-กลางคืน
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        themeToggle.innerHTML = isDark
+          ? '<i class="fas fa-sun"></i> ธีมกลางวัน'
+          : '<i class="fas fa-moon"></i> ธีมกลางคืน';
       });
 
-      window.onload = () => startWebcam("user");
+      // เริ่มกล้องตอนโหลดหน้า
+      startWebcam();
+
+      // กด Enter ที่ปุ่มเปลี่ยนภาษา ให้เลียนแบบคลิก (รองรับ Accessibility)
+      changeLanguageBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          changeLanguageBtn.click();
+        }
+      });
     </script>
   </body>
 </html>
